@@ -18,3 +18,18 @@ fetch(ENDPOINT)
     console.log(result);
   })
   .catch((error) => console.error(error));
+
+const showUsersButton = document.getElementById("btn");
+showUsersButton.addEventListener("click", function (dataArray) {
+  dataArray.forEach((data) => {
+    const cardWrapper = document.createElement("div");
+    cardWrapper.classList.add("card-wrapper");
+
+    const loginEl = document.createElement("h2");
+    loginEl.textContent = data.login;
+
+    let urlEl = document.createElement("a");
+    urlEl.textContent = data.url;
+    urlEl.setAttribute("href", "data.url");
+  });
+});
