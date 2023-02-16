@@ -12,14 +12,20 @@ Pastaba: Informacija apie user'į (jo kortelė) turi turėti bent minimalų stil
 
 const ENDPOINT = "https://api.github.com/users";
 
-fetch(ENDPOINT)
-  .then((response) => response.json())
-  .then((result) => {
-    console.log(result);
-    drawCards(result);
-  })
-  .catch((error) => console.error(error));
+const showUsersButton = document.getElementById("btn");
+const output = document.getElementById("output");
 
+showUsersButton.addEventListener("click", allData);
+
+function allData() {
+  fetch(ENDPOINT)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+      drawCards(result);
+    })
+    .catch((error) => console.error(error));
+}
 function drawCards(dataArray) {
   dataArray.forEach((data) => {
     const cardWrapper = document.createElement("div");
