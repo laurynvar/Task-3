@@ -16,20 +16,31 @@ fetch(ENDPOINT)
   .then((response) => response.json())
   .then((result) => {
     console.log(result);
+    drawCards(result);
   })
   .catch((error) => console.error(error));
 
-const showUsersButton = document.getElementById("btn");
-showUsersButton.addEventListener("click", function (dataArray) {
+function drawCards(dataArray) {
   dataArray.forEach((data) => {
     const cardWrapper = document.createElement("div");
     cardWrapper.classList.add("card-wrapper");
+    cardWrapper.style.backgroundColor = "gray";
+    cardWrapper.style.marginTop = "10px";
+
+    let descriptionWrapper = document.createElement("div");
+    descriptionWrapper.classList.add("description-wrapper");
+    descriptionWrapper.style.padding = "10px";
 
     const loginEl = document.createElement("h2");
     loginEl.textContent = data.login;
 
-    let urlEl = document.createElement("a");
+    const urlEl = document.createElement("a");
     urlEl.textContent = data.url;
     urlEl.setAttribute("href", "data.url");
+    urlEl.style.color = "white";
+
+    descriptionWrapper.append(loginEl, urlEl);
+    cardWrapper.append(descriptionWrapper);
+    output.append(cardWrapper);
   });
-});
+}
