@@ -42,5 +42,10 @@ function drawCards(dataArray) {
     descriptionWrapper.append(loginEl, urlEl);
     cardWrapper.append(descriptionWrapper);
     output.append(cardWrapper);
+
+    function deleteMessage() {
+      document.getElementById("message").innerHTML = "";
+    }
+    deleteMessage();
   });
 }
